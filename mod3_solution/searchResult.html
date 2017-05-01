@@ -1,11 +1,18 @@
 
 <h1> </h1>
-<div ng-if="!list.isEmpty()">
-<ul>
-  <li ng-repeat="item in list.found" >
-    {{item.name}}, {{item.short_name}}, {{item.description}}
-     <button ng-click="list.onRemove({index: $index});">Don't want this one!</button>
-  </li>
-</ul>
-</div>
 <div ng-if="list.isEmpty()" class="error">Nothing found.</div>
+<table>
+<div ng-app="NarrowItDownApp" ng-controller="NarrowItDownController">
+
+      <tr ng-repeat="item in list.found">
+        <td> {{$index+1}} </td>
+        <td> {{item.name}} </td>
+        <td> {{item.short_name}} </td>
+        <td> {{item.description}} </td>
+
+        <td><button ng-click="list.onRemove({index: $index});">Don't want this one!</button></td>
+   </tr>
+
+
+</div>
+</table>
