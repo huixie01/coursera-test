@@ -12,7 +12,7 @@ angular.module('MenuApp')
 CategoriesController.$inject = ['categories']
 
 function CategoriesController(categories) {
-  var categoriesCtrl = this;
+ var categoriesCtrl = this;
   categoriesCtrl.categories = categories;
 }
 
