@@ -60,7 +60,7 @@
 			return $http({
 				method: 'GET',
 				<!--url: 'https://davids-restaurant.herokuapp.com/menu_items.json'-->
-				<url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'>
+				url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
 			}).then(function (result){
 
 				var items = result.data.menu_items;
