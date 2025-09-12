@@ -62,7 +62,7 @@
 				url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
 			}).then(function (result){
 
-			var items = result.data.menu_items;
+			var items = result[0].data.menu_items;
         		var foundItems = [];
         		for (var i=0; i<items.length; i++) {
           			console.log(items[i].description);
