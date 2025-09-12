@@ -56,22 +56,22 @@
       var service = this;
 
 
-		  service.getMatchedMenuItems = function (searchTerm) {
+	service.getMatchedMenuItems = function (searchTerm) {
 			return $http({
 				method: 'GET',
 				url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
 			}).then(function (result){
 
-				var items = result.data.menu_items;
-        var foundItems = [];
-        for (var i=0; i<items.length; i++) {
-          //console.log(items[i].description);
-          if(items[i].description.toLowerCase().indexOf(searchTerm.toLowerCase()) >=0){
-            foundItems.push(items[i]);
-          }
+			var items = result.data.menu_items;
+        		var foundItems = [];
+        		for (var i=0; i<items.length; i++) {
+          			console.log(items[i].description);
+          			if(items[i].description.toLowerCase().indexOf(searchTerm.toLowerCase()) >=0){
+            			foundItems.push(items[i]);
+         		 }
         }
         return foundItems;
-			});
+	});
     };
   }
 }
