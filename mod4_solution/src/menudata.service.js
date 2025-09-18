@@ -11,15 +11,14 @@ function MenuDataService($http) {
   this.getAllCategories = function() {
     return $http({
       method: 'GET',
-      url: 'https://davids-restaurant.herokuapp.com/categories.json'
+      url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
     });
   }
 
   this.getItemsForCategory = function(categoryShortName) {
     return $http({
       method: 'GET',
-      url: 'https://davids-restaurant.herokuapp.com/menu_items.json',
-      params: {category: categoryShortName}
+      url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json?category='+categoryShortName
     });
   }
 }
