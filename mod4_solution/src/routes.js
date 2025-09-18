@@ -27,7 +27,9 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     resolve: {
       categories: ['MenuDataService', function(MenuDataService) {
         return MenuDataService.getAllCategories().then(function(response) {
-          return response.data;
+	//console.log(response.data);
+         // return response.data;
+	return Object.values(response.data).map(c => c.category);
         });
       }]
     }
@@ -41,11 +43,27 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     resolve: {
       items: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
         return MenuDataService.getItemsForCategory($stateParams.category).then(function(response) {
-          return response.data.menu_items;
+	  const categoryData = response.data[$stateParams.category];
+          return categoryData? categoryData.menu_items : [];
         });
       }]
     }
   })
+
+  .state('itemDetail', {
+  url: '/item/{category}/{itemId}',
+  templateUrl: 'src/item-detail.template.html',
+  controller: 'ItemDetailController as itemDetailCtrl',
+  resolve: {
+    item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+      return MenuDataService.getItemDetailsForCategory($stateParams.category, $stateParams.itemId)
+        .then(function(response) {
+	   const itemDetailData = response.data[$stateParams.categoru][$stateParams.itemId];
+          return itemDetailData? itemDetailData:[];
+        });
+    }]
+  }
+})
   ;
 }
 
