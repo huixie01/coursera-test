@@ -22,9 +22,7 @@
 
   function FoundItemsDirectiveController() {
     var list = this;
-	list.remove = function(index) {
-      list.onRemove({ index: index });
-    };
+	
     list.isEmpty = function() {
     return list.found != undefined && list.found.length === 0;
   }
