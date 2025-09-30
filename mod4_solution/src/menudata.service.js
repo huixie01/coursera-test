@@ -21,5 +21,11 @@ function MenuDataService($http) {
       url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json?category='+categoryShortName
     });
   }
+  this.getItemDetailsForCategoryItem = function(categoryShortName, itemId) {
+    return $http({
+      method: 'GET',
+      url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json?category='+categoryShortName+'&itemId='+itemId
+    });
+  }
 }
 })();
