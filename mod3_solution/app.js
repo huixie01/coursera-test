@@ -42,7 +42,7 @@
 			angular.forEach(rawData, function(value,key) {
 				console.log("key=",key);
 				if (value.menu_items) {
-					allItems = ctrl.foundItems.concat(value.menu_items);
+					allItems = allItems.concat(value.menu_items);
 				}
 			});
 			// Filter items by searchTerm
@@ -69,8 +69,8 @@
         return;
       }
       var promise = MenuSearchService.getMatchedMenuItems(controller.searchTerm);
-      promise.then (function(response) {
-        controller.items = response;
+      promise.then (function(matchedItems) {
+        controller.items = matchedIems;
       })
       .catch(function(error) {
         console.log("NarrowItDownController response encoutered error", error);
