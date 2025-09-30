@@ -53,7 +53,7 @@
     controller.removeItem = function (itemIndex) {
     		controller.items.splice(itemIndex, 1);
     };
-  } // end of function NarrowIDOwnCOntroller
+ // } // end of function NarrowIDOwnCOntroller
 	
   MenuSearchService.$inject = ['$http'];
 
@@ -65,23 +65,23 @@
 				url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
 			}).then(function (response){
 			var rawData = response.data;
-				ctrl.allItems = [];
-			angular.forEach(rawData, function(key,value) {
+			var allItems = [];
+			angular.forEach(rawData, function(value,key) {
 				console.log("key=",key);
 				if (value.menu_items) {
-					ctrl.allItems = ctrl.foundItems.concat(value.menu_items);
+					allItems = ctrl.foundItems.concat(value.menu_items);
 				}
 			});
-			ctrl.findItemsByName = function(searchItem) {
-	  			var term = searchItem.toLowerCase();
-	  			ctrl.items = ctrl.allItems.filter(function(item) {
+			// Filter items by searchTerm
+			var term - searchTerm.toLowerCase();
+			var matchedItems = allItems.filter(function(item) {
 	    			return item.name.toLowerCase().includes(term);
-	  			});
-			};
+	  		});
 				
 			}); //end of then
 	
     }; //end of getMatchedMenuItems
   }  // end of getMatchedService
+ } // end of function NarrowIDOwnCOntroller
 }
 )();
