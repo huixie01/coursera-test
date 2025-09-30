@@ -65,20 +65,20 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   }
 });
 
-//.state('', {
-//  url: '/item/{category}/{itemId}',
-//  templateUrl: 'src/item-detail.template.html',
-//  controller: 'ItemDetailController as itemDetailCtrl',
-//  resolve: {
- //   item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
- //     return MenuDataService.getItemDetailsForCategory($stateParams.category, $stateParams.itemId)
- //       .then(function(response) {
-//	   const itemDetailData = response.data[$stateParams.categoru][$stateParams.itemId];
- //         return itemDetailData? itemDetailData:[];
-//        });
-//    }] // end of item
-//  }
-//});
+.state('', {
+  url: '/item/{category}/{itemId}',
+  templateUrl: 'src/item-detail.template.html',
+  controller: 'ItemDetailController as itemDetailCtrl',
+  resolve: {
+    item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+      return MenuDataService.getItemDetailsForItem($stateParams.category, $stateParams.itemId)
+        .then(function(response) {
+	   const itemDetailData = response.data[$stateParams.categoru][$stateParams.itemId];
+          return itemDetailData? itemDetailData:[];
+        });
+    }] // end of item
+  }
+});
 	
 } // end of RoutesConfig
 
