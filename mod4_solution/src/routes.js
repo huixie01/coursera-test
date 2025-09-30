@@ -53,7 +53,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   .state('itemDetail', {
   url: '/categories/{category}/{itemId}',
   templateUrl: 'src/item-detail.template.html',
-  controller: 'ItemDetailController as itemDetailCtrl',
+  controller: 'ItemDetailsController as itemDetailsCtrl',
   resolve: {
     item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
       return MenuDataService.getItemDetailsForCategory($stateParams.category, $stateParams.itemId)
@@ -68,13 +68,13 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 .state('', {
   url: '/item/{category}/{itemId}',
   templateUrl: 'src/item-detail.template.html',
- controller: 'ItemDetailsController as itemDetailCtrl',
+ controller: 'ItemDetailsController as itemDetailsCtrl',
  resolve: {
     item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
       return MenuDataService.getItemDetailsForCaregoryItem($stateParams.category, $stateParams.itemId)
         .then(function(response) {
-	   const itemDetailData = response.data[$stateParams.category][$stateParams.itemId].data;
-          return itemDetailData? itemDetailData:[];
+	   		const itemDetailsData = response.data[$stateParams.category][$stateParams.itemId];
+           return itemDetailData? itemDetailData:[];
         });
     }] // end of item
   }
