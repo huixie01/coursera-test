@@ -5,7 +5,7 @@
 angular.module('MenuApp')
 .controller('ItemDetailsController', ItemDetailsController)
 .component('itemdetails', {
-  templateUrl: 'src/itemdetailsscomponent.template.html',
+  templateUrl: 'src/itemdetailscomponent.template.html',
   bindings: {
     itemdetails: '<'
   }
