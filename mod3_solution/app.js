@@ -70,7 +70,7 @@
       }
       var promise = MenuSearchService.getMatchedMenuItems(controller.searchTerm);
       promise.then (function(matchedItems) {
-        controller.items = matchedIems;
+        controller.items = matchedItems;
       })
       .catch(function(error) {
         console.log("NarrowItDownController response encoutered error", error);
