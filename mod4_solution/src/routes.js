@@ -63,7 +63,8 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
         });
     }]
   }
-});
+})
+	
 
 
 	
