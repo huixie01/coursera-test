@@ -39,10 +39,18 @@
 			}).then(function (response){
 			var rawData = response.data;
 			var allItems = [];
+			
 			angular.forEach(rawData, function(value,key) {
 				console.log("key=",key);
-				if (value.menu_items) {
-					allItems = allItems.concat(value.menu_items);
+				if (value.menu_items && value.category) {
+					var categoryName = value.category.name;
+					
+					value.menu_items.forEach(function(item) {
+						item.category = categoryName;
+						allItems.push(item);
+					});
+				
+					//allItems = allItems.concat(value.menu_items);
 				}
 			});
 			// Filter items by searchTerm
