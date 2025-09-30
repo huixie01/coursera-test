@@ -66,9 +66,10 @@
 			}).then(function (result){
 			var rawData = response.data;
 				ctrl.allItems = [];
-			angular.forEach(rawData, function(categoryData) {
-				if categoryData.menu_items) {
-					ctrl.allItems = ctrl.foundItems.concat(categpryData.menu_items);
+			angular.forEach(rawData, function(key,value) {
+				console.log("key=",key);
+				if (value.menu_items) {
+					ctrl.allItems = ctrl.foundItems.concat(value.menu_items);
 				}
 			});
 			ctrl.findItemsByName = function(searchItem) {
