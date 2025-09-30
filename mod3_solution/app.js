@@ -73,7 +73,7 @@
 				}
 			});
 			// Filter items by searchTerm
-			var term - searchTerm.toLowerCase();
+			var term = searchTerm.toLowerCase();
 			var matchedItems = allItems.filter(function(item) {
 	    			return item.name.toLowerCase().includes(term);
 	  		});
