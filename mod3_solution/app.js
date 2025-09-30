@@ -76,6 +76,7 @@
       .catch(function(error) {
         console.log("NarrowItDownController response encoutered error", error);
       });
+		return controller.items;
     }; // end of searchedList
 
     controller.removeItem = function (itemIndex) {
