@@ -28,36 +28,9 @@
     return ddo;
   } //end of directive function
 
-  
-  NarrowItDownController.$inject = ['MenuSearchService'];
-	
-  function NarrowItDownController(MenuSearchService) {
-    var controller = this;
-    controller.searchTerm = "";
+	MenuSearchService.$inject = ['$http'];
 
-
-    controller.searchedList = function() {
-      if (controller.searchTerm === "") {
-        controller.items = [];
-        return;
-      }
-      var promise = MenuSearchService.getMatchedMenuItems(controller.searchTerm);
-      promise.then (function(response) {
-        controller.items = response;
-      })
-      .catch(function(error) {
-        console.log("NarrowItDownController response encoutered error", error);
-      });
-    }; // end of searchedList
-
-    controller.removeItem = function (itemIndex) {
-    		controller.items.splice(itemIndex, 1);
-    };
-  } // end of function NarrowIDOwnCOntroller
-	
-  MenuSearchService.$inject = ['$http'];
-
-  function MenuSearchService($http) {
+    function MenuSearchService($http) {
     var service = this;
 	service.getMatchedMenuItems = function (searchTerm) {
 			return $http({
@@ -84,4 +57,32 @@
   }  // end of getMatchedService
  
 }
+  NarrowItDownController.$inject = ['MenuSearchService'];
+	
+  function NarrowItDownController(MenuSearchService) {
+    var controller = this;
+    controller.searchTerm = "";
+
+
+    controller.searchedList = function() {
+      if (controller.searchTerm === "") {
+        controller.items = [];
+        return;
+      }
+      var promise = MenuSearchService.getMatchedMenuItems(controller.searchTerm);
+      promise.then (function(response) {
+        controller.items = response;
+      })
+      .catch(function(error) {
+        console.log("NarrowItDownController response encoutered error", error);
+      });
+    }; // end of searchedList
+
+    controller.removeItem = function (itemIndex) {
+    		controller.items.splice(itemIndex, 1);
+    };
+  } // end of function NarrowIDOwnCOntroller
+	
+  
+
 )();
