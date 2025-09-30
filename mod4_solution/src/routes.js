@@ -65,20 +65,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   }
 });
 
-.state('', {
-  url: '/item/{category}/{itemId}',
-  templateUrl: 'src/itemdetailscomponent.template.html',
- controller: 'ItemDetailsController as itemDetailsCtrl',
- resolve: {
-    item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
-      return MenuDataService.getItemDetailsForCaregoryItem($stateParams.category, $stateParams.itemId)
-        .then(function(response) {
-	   		const itemDetailsData = response.data[$stateParams.category][$stateParams.itemId];
-           return itemDetailData? itemDetailData:[];
-        });
-    }] // end of item
-  }
-});
+
 	
 } // end of RoutesConfig
 
