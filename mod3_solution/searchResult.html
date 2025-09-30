@@ -3,9 +3,17 @@
 <div ng-if="list.isEmpty()" class="error">Nothing found.</div>
 <table>
 <div ng-app="NarrowItDownApp" ng-controller="NarrowItDownController">
-
+<thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Short Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
       <tr ng-repeat="item in list.found">
-        <td> {{$index+1}} </td>
+        <td> {{$index+1}}. </td>
         <td> {{item.name}} </td>
         <td> {{item.short_name}} </td>
         <td> {{item.description}} </td>
