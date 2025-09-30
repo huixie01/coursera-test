@@ -1,7 +1,5 @@
-<ul>
-  <li ng-repeat="itemdetails in $ctrl.itemdetails">
-	  <a ui-sref="itemdetails({ item: item.short_name })">{{ item.name }}
-    <a ui-sref="itemdetails({ item: item.description })">{{ item.description }}
-	</a>
-  </li>
-</ul>
+
+<h2>{{ itemCtrl.itemDetails.name }}</h2>
+<p>{{ itemCtrl.itemDetails.description }}</p>
+
+	
