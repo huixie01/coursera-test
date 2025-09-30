@@ -50,7 +50,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('itemDetail', {
+  .state('itemDetails', {
   url: '/categories/{category}/{itemId}',
   templateUrl: 'src/itemdetailscompnent.template.html',
   controller: 'ItemDetailsController as itemDetailsCtrl',
@@ -59,6 +59,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
       return MenuDataService.getItemDetailsForCategory($stateParams.category, $stateParams.itemId)
         .then(function(response) {
 	   const itemDetailData = response.data[$stateParams.category][$stateParams.itemId];
+			console.log(itemDetailData);
           return itemDetailData? itemDetailData:[];
         });
     }]
