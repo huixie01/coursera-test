@@ -63,7 +63,7 @@
 			return $http({
 				method: 'GET',
 				url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
-			}).then(function (result){
+			}).then(function (response){
 			var rawData = response.data;
 				ctrl.allItems = [];
 			angular.forEach(rawData, function(key,value) {
