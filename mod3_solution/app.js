@@ -56,7 +56,7 @@
     }; //end of getMatchedMenuItems
   }  // end of getMatchedService
  
-}
+
 
 	
   function NarrowItDownController(MenuSearchService) {
