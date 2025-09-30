@@ -53,7 +53,7 @@
     controller.removeItem = function (itemIndex) {
     		controller.items.splice(itemIndex, 1);
     };
- // } // end of function NarrowIDOwnCOntroller
+  } // end of function NarrowIDOwnCOntroller
 	
   MenuSearchService.$inject = ['$http'];
 
@@ -77,11 +77,11 @@
 			var matchedItems = allItems.filter(function(item) {
 	    			return item.name.toLowerCase().includes(term);
 	  		});
-				
+			return matchedItems;
 			}); //end of then
 	
     }; //end of getMatchedMenuItems
   }  // end of getMatchedService
- } // end of function NarrowIDOwnCOntroller
+ 
 }
 )();
