@@ -57,7 +57,7 @@
   }  // end of getMatchedService
  
 }
-  NarrowItDownController.$inject = ['MenuSearchService'];
+
 	
   function NarrowItDownController(MenuSearchService) {
     var controller = this;
@@ -83,7 +83,7 @@
     		controller.items.splice(itemIndex, 1);
     };
   } // end of function NarrowIDOwnCOntroller
-	
+ NarrowItDownController.$inject = ['MenuSearchService'];
   
 
 )();
