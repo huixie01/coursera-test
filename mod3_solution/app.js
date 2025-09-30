@@ -54,7 +54,7 @@
 			}); //end of then
 	
     }; //end of getMatchedMenuItems
-  }  // end of getMatchedService
+  }  // end of MenuSearchService
  
 
 
@@ -82,8 +82,8 @@
     controller.removeItem = function (itemIndex) {
     		controller.items.splice(itemIndex, 1);
     };
-  } // end of function NarrowIDOwnCOntroller
+  } // end of function NarrowItDOwnCOntroller
  NarrowItDownController.$inject = ['MenuSearchService'];
   
 
-)();
+})();
