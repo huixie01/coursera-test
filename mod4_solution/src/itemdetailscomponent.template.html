@@ -1,5 +1,7 @@
-<a ui-sref="$itemCtrl.itemDetails({ item: item.short_name })">
-{{ itemCtrl.itemdetails.name }}
-{{ itemCtrl.itemdetails.description }}
+<a ui-sref="itemDetails({ category: item.category, itemId: item.id })">
+  	{{ item.name }}
+
+	{{ item.description }}
 </a>
+
 	
