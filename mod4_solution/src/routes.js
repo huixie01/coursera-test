@@ -37,7 +37,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
   // Items page
   .state('items', {
-    url: '/items/{category}',
+    url: '/categories/:category',
     templateUrl: 'src/items.template.html',
     controller: 'ItemsController as itemsCtrl',
     resolve: {
@@ -50,21 +50,25 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     }
   })
 
-  .state('itemDetail', {
-  url: '/item/{category}/{itemId}',
-  templateUrl: 'src/item-detail.template.html',
-  controller: 'ItemDetailController as itemDetailCtrl',
+  .state('itemDetails', {
+  url: '/categories/:category/:itemId',
+  templateUrl: 'src/itemdetailscompnent.template.html',
+  controller: 'ItemDetailsController as itemDetailsCtrl',
   resolve: {
     item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
-      return MenuDataService.getItemDetailsForCategory($stateParams.category, $stateParams.itemId)
+      return MenuDataService.getItemDetailsForCategoryItem($stateParams.category, $stateParams.itemId)
         .then(function(response) {
-	   const itemDetailData = response.data[$stateParams.categoru][$stateParams.itemId];
+	   const itemDetailData = response.data[$stateParams.category][$stateParams.itemId];
+			console.log(itemDetailData);
           return itemDetailData? itemDetailData:[];
         });
     }]
   }
 })
-  ;
-}
+	
+
+
+	
+} // end of RoutesConfig
 
 })();

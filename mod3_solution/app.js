@@ -5,6 +5,14 @@
   .service('MenuSearchService', MenuSearchService)
   .directive('foundItems', FoundItemsDirective);
 
+  function FoundItemsDirectiveController() {
+    var list = this;
+	
+    list.isEmpty = function() {
+    return list.found != undefined && list.found.length === 0;
+  	}
+  } // end of FoundItemsDirectiveController
+	
   function FoundItemsDirective() {
     var ddo = {
       templateUrl: 'searchResult.html',
@@ -18,14 +26,45 @@
 
     };
     return ddo;
-  }
+  } //end of directive function
 
-  function FoundItemsDirectiveController() {
-    var list = this;
-    list.isEmpty = function() {
-    return list.found != undefined && list.found.length === 0;
-  }
-  }
+	MenuSearchService.$inject = ['$http'];
+
+    function MenuSearchService($http) {
+    var service = this;
+	service.getMatchedMenuItems = function (searchTerm) {
+			return $http({
+				method: 'GET',
+				url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
+			}).then(function (response){
+			var rawData = response.data;
+			var allItems = [];
+			
+			angular.forEach(rawData, function(value,key) {
+				console.log("key=",key);
+				if (value.menu_items && value.category) {
+					var categoryName = value.category.name;
+					
+					value.menu_items.forEach(function(item) {
+						item.category = categoryName;
+						allItems.push(item);
+					});
+				
+					//allItems = allItems.concat(value.menu_items);
+				}
+			});
+			// Filter items by searchTerm
+			var term = searchTerm.toLowerCase();
+			var matchedItems = allItems.filter(function(item) {
+	    			return item.name.toLowerCase().includes(term);
+	  		});
+			return matchedItems;
+			}); //end of then
+	
+    }; //end of getMatchedMenuItems
+  }  // end of MenuSearchService
+ 
+
   NarrowItDownController.$inject = ['MenuSearchService'];
   function NarrowItDownController(MenuSearchService) {
     var controller = this;
@@ -38,41 +77,20 @@
         return;
       }
       var promise = MenuSearchService.getMatchedMenuItems(controller.searchTerm);
-      promise.then (function(response) {
-        controller.items = response;
+      promise.then (function(matchedItems) {
+        controller.items = matchedItems;
       })
       .catch(function(error) {
         console.log("NarrowItDownController response encoutered error", error);
       });
-    };
+		return controller.items;
+    }; // end of searchedList
 
     controller.removeItem = function (itemIndex) {
     		controller.items.splice(itemIndex, 1);
     };
-  }
-  MenuSearchService.$inject = ['$http'];
+  } // end of function NarrowItDOwnCOntroller
 
-    function MenuSearchService($http) {
-      var service = this;
+  
 
-
-	service.getMatchedMenuItems = function (searchTerm) {
-			return $http({
-				method: 'GET',
-				url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json'
-			}).then(function (result){
-
-			var items = result[0].foundItems.menu_items;
-        		var foundItems = [];
-        		for (var i=0; i<items.length; i++) {
-          			console.log(items[i].description);
-          			if(items[i].description.toLowerCase().indexOf(searchTerm.toLowerCase()) >=0){
-            			foundItems.push(items[i]);
-         		 }
-        }
-        return foundItems;
-	});
-    };
-  }
-}
-)();
+})();
