@@ -1,7 +1,14 @@
-<a ui-sref="itemDetails({ category: item.category, itemId: item.id })">
-  	{{ item.name }}
-  {{itemDetailsCtrl.menu_item_details}}
-	{{ item.description }}
-</a>
+<div class="item-details" ng-if="itemDetailsCtrl.menu_item_details && Object.keys(itemDetailsCtrl.menu_item_details).length">
+  <h2>{{ itemDetailsCtrl.menu_item_details.name }}</h2>
+  <p><strong>Short name:</strong> {{ itemDetailsCtrl.menu_item_details.short_name }}</p>
+  <p><strong>Category:</strong> {{ itemDetailsCtrl.menu_item_details.category }}</p>
+  <p><strong>Description:</strong></p>
+  <p>{{ itemDetailsCtrl.menu_item_details.description }}</p>
+  <!-- add more fields if available, e.g. price, large_portion_name -->
+</div>
+
+<div ng-if="!itemDetailsCtrl.menu_item_details || Object.keys(itemDetailsCtrl.menu_item_details).length === 0">
+  <p>No details available for this item.</p>
+</div>
 
 	
