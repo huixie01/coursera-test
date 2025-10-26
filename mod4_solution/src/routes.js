@@ -55,7 +55,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   templateUrl: 'src/itemdetailscomponent.template.html',
   controller: 'ItemDetailsController as itemDetailsCtrl',
   resolve: {
-    item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+    itemdetails: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
       return MenuDataService.getItemDetailsForCategoryItem($stateParams.category, $stateParams.itemId)
         .then(function(response) {
 	   const itemDetailData = response.data[$stateParams.category][$stateParams.itemId];
