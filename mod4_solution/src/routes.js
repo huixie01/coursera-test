@@ -52,7 +52,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
   .state('itemDetails', {
   url: '/categories/:category/:itemId',
-  templateUrl: 'src/itemdetailscompnent.template.html',
+  templateUrl: 'src/itemdetailscomponent.template.html',
   controller: 'ItemDetailsController as itemDetailsCtrl',
   resolve: {
     item: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
