@@ -1,13 +1,13 @@
-<div class="item-details" ng-if="itemDetailsCtrl.menu_item_details && Object.keys(itemDetailsCtrl.menu_item_details).length">
-  <h2>{{ itemDetailsCtrl.menu_item_details.name }}</h2>
-  <p><strong>Short name:</strong> {{ itemDetailsCtrl.menu_item_details.short_name }}</p>
-  <p><strong>Category:</strong> {{ itemDetailsCtrl.menu_item_details.category }}</p>
+<div class="item-details" ng-if="itemDetailsCtrl.category_item_details && Object.keys(itemDetailsCtrl.category_item_details).length">
+  <h2>{{ itemDetailsCtrl.category_item_details.name }}</h2>
+  <p><strong>Short name:</strong> {{ itemDetailsCtrl.category_item_details.short_name }}</p>
+  <p><strong>Category:</strong> {{ itemDetailsCtrl.category_item_details.category }}</p>
   <p><strong>Description:</strong></p>
-  <p>{{ itemDetailsCtrl.menu_item_details.description }}</p>
+  <p>{{ itemDetailsCtrl.category_item_details.description }}</p>
 
 </div>
 
-<div ng-if="!itemDetailsCtrl.menu_item_details || Object.keys(itemDetailsCtrl.menu_item_details).length === 0">
+<div ng-if="!itemDetailsCtrl.category_item_details || Object.keys(itemDetailsCtrl.category_item_details).length === 0">
   <p>No details available for this item.</p>
 </div>
 

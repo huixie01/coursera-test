@@ -1,6 +1,6 @@
 <ul>
   <li ng-repeat="item in $ctrl.items">
-	<a ui-sref="items({ item: item.short_name }) ng-click="getItemDetailsForCategory(item.short_name, item)">{{ item.name }}
+	<a ui-sref="itemDetails({ category: $ctrl.category, itemId: $index})"> {{$index+1}} {{ item.name }}
 	</a>
   </li>
 </ul>

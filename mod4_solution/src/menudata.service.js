@@ -7,6 +7,7 @@ angular.module('data')
 MenuDataService.$inject = ['$http']
 function MenuDataService($http) {
   var service = this;
+  
 
   this.getAllCategories = function() {
     return $http({
@@ -21,10 +22,12 @@ function MenuDataService($http) {
       url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json?category='+categoryShortName
     });
   }
-  this.getItemDetailsForCategoryItem = function(categoryShortName, itemId) {
+
+
+  this.getItemDetails = function(categoryShortName, itemId) {
     return $http({
       method: 'GET',
-      url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json?category='+categoryShortName+'&itemId='+itemId
+      url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/'+categoryShortName+'.json'
     });
   }
 }
