@@ -12,7 +12,7 @@ angular.module('MenuApp')
 });
 
 // 'item' is injected through state's resolve
-ItemDetailsController.$inject = []
+ItemDetailsController.$inject = ['itemDetails']
 function ItemDetailsController(itemDetails) {
   var ctrl = this;
   var category_item_details = itemDetails;
