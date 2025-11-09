@@ -14,8 +14,6 @@ CategoriesController.$inject = ['categories']
 function CategoriesController(categories) {
  var categoriesCtrl = this;
   categoriesCtrl.categories = categories;
-  console.log('Resolved categories:', this.categories);
-
 }
 
 })();
