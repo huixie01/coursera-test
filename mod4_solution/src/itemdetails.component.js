@@ -16,7 +16,5 @@ ItemDetailsController.$inject = ['itemDetails']
 function ItemDetailsController(itemDetails) {
   var ctrl = this;
   ctrl.category_item_details = itemDetails;
-  console.log(category_item_details);
-}
 
 })();
