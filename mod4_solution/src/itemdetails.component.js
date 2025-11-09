@@ -7,15 +7,16 @@ angular.module('MenuApp')
 .component('itemdetails', {
   templateUrl: 'src/itemdetailscomponent.template.html',
   bindings: {
-    itemdetails: '<'
+    itemDetails: '<'
   }
 });
 
 // 'item' is injected through state's resolve
-ItemDetailsController.$inject = ['itemdetails']
+ItemDetailsController.$inject = ['itemsDetails']
 function ItemDetailsController(itemdetails) {
   var ctrl = this;
-  this.menu_item_details = itemdetails;
+ // this.menu_item_details = itemdetails;
+  ctrl.category_item_details = itemDetails;
 }
 
 })();
