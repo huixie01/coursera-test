@@ -15,7 +15,7 @@ angular.module('MenuApp')
 ItemDetailsController.$inject = ['itemDetails']
 function ItemDetailsController(itemDetails) {
   var ctrl = this;
-  var category_item_details = itemDetails;
+  ctrl.category_item_details = itemDetails;
   console.log(category_item_details);
 }
 
