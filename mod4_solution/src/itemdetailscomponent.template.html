@@ -1,10 +1,25 @@
-<div class="item-details" ng-if="itemDetailsCtrl.category_item_details && Object.keys(itemDetailsCtrl.category_item_details).length">
-  <h2>{{ itemDetailsCtrl.category_item_details.name }}</h2>
-  <p><strong>Short name:</strong> {{ itemDetailsCtrl.category_item_details.short_name }}</p>
-  <p><strong>Category:</strong> {{ itemDetailsCtrl.category_item_details.category }}</p>
-  <p><strong>Description:</strong></p>
-  <p>{{ itemDetailsCtrl.category_item_details.description }}</p>
 
+<div class="item-details">
+  <h2>{{ itemDetailsCtrl.category_item_details.name }}</h2>
+	
+  <p><strong>Large Portion Price:</strong> {{ itemDetailsCtrl.category_item_details.price_large }}$  {{itemDetailsCtrl.category_item_details.large_portion_name}}</p>
+
+<p><strong>Small Portion Price:</strong> {{ itemDetailsCtrl.category_item_details.price_small }}$  {{itemDetailsCtrl.category_item_details.small_portion_name}}</p>
+
+  <p>
+  <strong>Description:</strong>{{ itemDetailsCtrl.category_item_details.description ?  itemDetailsCtrl.category_item_details.description  : 'No description available' }} 
+  </p>
+</div>
+   <!-- add more fields if available, e.g. price, large_portion_name -->
+<!--
+<div class="item-details" >
+  <h2>{{ $ctrl.category_item_detail.name }}</h2>
+  <p><strong>Short name:</strong> {{ itemDetailsCtrl.category_item_detail.short_name }}</p>
+  <p><strong>Description:</strong> {{ itemDetailsCtrl.category_item_detail.description }}</p>
+  <p><strong>Price:</strong></p>
+  <p>{{ itemDetailsCtrl.category_item_detail.price_large }}</p>
+
+-->
 </div>
 
 <div ng-if="!itemDetailsCtrl.category_item_details || Object.keys(itemDetailsCtrl.category_item_details).length === 0">

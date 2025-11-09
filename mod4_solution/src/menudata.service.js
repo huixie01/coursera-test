@@ -19,12 +19,10 @@ function MenuDataService($http) {
   this.getItemsForCategory = function(categoryShortName) {
     return $http({
       method: 'GET',
-      url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items.json?category='+categoryShortName
+      url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/'+categoryShortName+'.json'
     });
-  }
-
-
-  this.getItemDetails = function(categoryShortName, itemId) {
+ }
+  this.getItemDetails = function(categoryShortName,itemId) {
     return $http({
       method: 'GET',
       url: 'https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/'+categoryShortName+'.json'
