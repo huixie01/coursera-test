@@ -40,11 +40,18 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     url: '/categories/:category',
     templateUrl: 'src/items.template.html',
     controller: 'ItemsController as itemsCtrl',
+    //component: 'items',
     resolve: {
       items: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+	console.log("In Items, stateParams:"+$stateParams.category);
         return MenuDataService.getItemsForCategory($stateParams.category).then(function(response) {
-	  const categoryData = response.data[$stateParams.category];
-          return categoryData? categoryData.menu_items : [];
+  	  console.log('Raw response', response);
+	 	 // const categoryJsonData = JSON.parse(categoryJsonStr);
+	  	var categoryshortName = response.data.category.short_name;
+		console.log(categoryshortName); // Output: "B"
+	
+	 	                   
+          return categoryshortName? response.data.menu_items.map(item => ({...item, category:categoryshortName})) : [];				
         });
       }]
     }
@@ -55,10 +62,24 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
   templateUrl: 'src/itemdetailscomponent.template.html',
   controller: 'ItemDetailsController as itemDetailsCtrl',
   resolve: {
+
+/*
     itemdetails: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
       return MenuDataService.getItemDetailsForCategoryItem($stateParams.category, $stateParams.itemId)
         .then(function(response) {
 	   const itemDetailData = response.data[$stateParams.category][$stateParams.itemId];
+
+*/
+   
+    itemDetails: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+ console.log("In itemDetails, category:"+$stateParams.category);
+    console.log("itemId:"+$stateParams.itemId);
+      return MenuDataService.getItemDetails($stateParams.category,$stateParams.itemId)
+        .then(function(response) {
+	  console.log(response.data);
+	   const itemDetailDatas = response.data.menu_items;
+	    console.log("itemDetailDatas:"+itemDetailDatas);
+	   const itemDetailData = itemDetailDatas[$stateParams.itemId];
 			console.log(itemDetailData);
           return itemDetailData? itemDetailData:[];
         });
